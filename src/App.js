@@ -10,48 +10,61 @@ import {useCacheTaskList} from "./hooks/useCacheTaskList";
 
 
 function App() {
-   const {addNewTask, taskList,changeStatus,setTaskList}= useTaskList();
-
-  useCacheTaskList(taskList,setTaskList);
-
-
-   const {filterStatus,onChangeStatus} = useFilterByStatus();
-   const {
-        handleSubmit,
-        onChangeInput,
-        inputValue
-   }=useCreateTaskForm ({onSubmit: addNewTask});
-
-
-   const {filteredTaskList} =useTaskFilteredByStatus({list:taskList,filterStatus})
+    const [ messageList , setMessageList ] = useState([]);
+  //  const {addNewTask, taskList,changeStatus,setTaskList}= useTaskList();
+  //
+  // useCacheTaskList(taskList,setTaskList);
+  //
+  //
+  //  const {filterStatus,onChangeStatus} = useFilterByStatus();
+  //  const {
+  //       handleSubmit,
+  //       onChangeInput,
+  //       inputValue
+  //  }=useCreateTaskForm ({onSubmit: addNewTask});
+  //
+  //
+  //  const {filteredTaskList} =useTaskFilteredByStatus({list:taskList,filterStatus})
 
   return (
       <div className="App">
-          <form onSubmit={handleSubmit}>
-              <input onChange={onChangeInput} value={inputValue} type="text"/>
-              <button type="submit">
-                  Save
-              </button>
-          </form>
-          <select value={filterStatus} onChange={onChangeStatus}>
-              <option value={FILTER_BY_STATUS_ALL}>all</option>
-              <option value={FILTER_BY_STATUS_IN_WORK}>in work</option>
-              <option value={FILTER_BY_STATUS_COMPLETED}>complete</option>
-          </select>
-          <ul>
               {
-                  filteredTaskList.map(({status, text},index) => {
-                      return <li key={index}>
-                          <input
-                              checked={status}
-                              type="checkbox"
-                              onClick={changeStatus(index,status)}
-                          />
+                  messageList.map(({text, author},index) => {
+                      return <div key={index}>
+                          <h3>{author}</h3>
+                          <p>
                           {text}
-                      </li>
+                          </p>
+                      </div>
                   })
               }
-          </ul>
+
+
+          {/*<form onSubmit={handleSubmit}>*/}
+          {/*    <input onChange={onChangeInput} value={inputValue} type="text"/>*/}
+          {/*    <button type="submit">*/}
+          {/*        Save*/}
+          {/*    </button>*/}
+          {/*</form>*/}
+          {/*<select value={filterStatus} onChange={onChangeStatus}>*/}
+          {/*    <option value={FILTER_BY_STATUS_ALL}>all</option>*/}
+          {/*    <option value={FILTER_BY_STATUS_IN_WORK}>in work</option>*/}
+          {/*    <option value={FILTER_BY_STATUS_COMPLETED}>complete</option>*/}
+          {/*</select>*/}
+          {/*<ul>*/}
+          {/*    {*/}
+          {/*        filteredTaskList.map(({status, text},index) => {*/}
+          {/*            return <li key={index}>*/}
+          {/*                <input*/}
+          {/*                    checked={status}*/}
+          {/*                    type="checkbox"*/}
+          {/*                    onClick={changeStatus(index,status)}*/}
+          {/*                />*/}
+          {/*                {text}*/}
+          {/*            </li>*/}
+          {/*        })*/}
+          {/*    }*/}
+          {/*</ul>*/}
       </div>
   );
 }
