@@ -3,16 +3,16 @@ import {useEffect} from "react";
 
 
 
-export const useCacheTaskList = (taskList, setTaskList) => {
-    const key = 'Task-list';
+export const useCacheMessageList = (List, setList) => {
+    const key = 'List';
     useDidUpdate(() => {
-        localStorage.setItem(key, JSON.stringify(taskList));
-    },[taskList])
+        localStorage.setItem(key, JSON.stringify(List));
+    },[List])
 
     useEffect(()=> {
         const json = localStorage.getItem(key);
         if (json){
-            setTaskList(JSON.parse(json)) ;
+            setList(JSON.parse(json)) ;
         }
     },[])
 }

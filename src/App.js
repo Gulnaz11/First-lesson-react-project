@@ -1,44 +1,50 @@
 import './App.css';
 import {useState, useCallback, useMemo, useEffect} from "react";
-import {useCreateTaskForm} from "./hooks/useCreateTaskForm";
+import {useCreateMessageForm} from "./hooks/useCreateMessageForm";
 import {useTaskList} from "./hooks/useTaskList";
 import {FILTER_BY_STATUS_ALL, FILTER_BY_STATUS_COMPLETED, FILTER_BY_STATUS_IN_WORK} from "./constants";
 import {useFilterByStatus} from "./hooks/useFilterByStatus";
 import {useTaskFilteredByStatus} from "./hooks/useTaskFilteredByStatus";
 import {useDidUpdate} from "./hooks/useDidUpdate";
-import {useCacheTaskList} from "./hooks/useCacheTaskList";
+import {useCacheMessageList} from "./hooks/useCacheMessageList";
+import {useMessageList} from "./hooks/useMessageList";
 
 
 function App() {
-    const [ messageList , setMessageList ] = useState([]);
-  //  const {addNewTask, taskList,changeStatus,setTaskList}= useTaskList();
+
+    const {messageList,setMessageList, addNewMessage} = useMessageList();
+
+    //  const {addNewTask, taskList,changeStatus,setTaskList}= useTaskList();
   //
-  // useCacheTaskList(taskList,setTaskList);
+   useCacheMessageList(messageList,setMessageList);
   //
   //
   //  const {filterStatus,onChangeStatus} = useFilterByStatus();
-  //  const {
-  //       handleSubmit,
-  //       onChangeInput,
-  //       inputValue
-  //  }=useCreateTaskForm ({onSubmit: addNewTask});
-  //
+   const {
+        handleSubmit,
+        onChangeInput,
+        inputValue
+   }=useCreateMessageForm ({onSubmit: addNewMessage});
+
   //
   //  const {filteredTaskList} =useTaskFilteredByStatus({list:taskList,filterStatus})
 
   return (
       <div className="App">
-              {
-                  messageList.map(({text, author},index) => {
-                      return <div key={index}>
-                          <h3>{author}</h3>
-                          <p>
-                          {text}
-                          </p>
-                      </div>
+          <form onSubmit={handleSubmit}>
+              <input onChange={onChangeInput} value={inputValue} type="text"/>
+              <button type="submit">send</button>
+          </form>
+          {
+              messageList.map(({text, author},index) => {
+                  return <div key={index}>
+                      <h4>{author}:</h4>
+                      <p>
+                      {text}
+                      </p>
+                  </div>
                   })
-              }
-
+          }
 
           {/*<form onSubmit={handleSubmit}>*/}
           {/*    <input onChange={onChangeInput} value={inputValue} type="text"/>*/}
