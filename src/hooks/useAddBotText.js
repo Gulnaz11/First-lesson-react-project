@@ -5,5 +5,5 @@ export const useAddBotText =(list, addNewList) => {
         if(list[list.length-1].author==='Me'){
             addNewList("Hey","Bot")
         };
-    },[list])
+    },[list],2000)
 }

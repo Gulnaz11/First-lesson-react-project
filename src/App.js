@@ -35,7 +35,7 @@ function App() {
           </form>
           {
               messageList.map(({text, author},index) => {
-                  return <div key={index}>
+                  return <div className="dialog" key={index}>
                       <h4>{author}:</h4>
                       <p>
                       {text}
