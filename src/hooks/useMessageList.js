@@ -4,9 +4,9 @@ import {useCallback, useState} from "react";
 export const useMessageList = () => {
     const [ messageList , setMessageList ] = useState([]);
 
-    const addNewMessage = useCallback((text,author) =>{
+    const addNewMessage = useCallback((text) =>{
         const message = {
-            author:author || 'Me',
+            author:'Me',
             text,
         }
         setMessageList((prevState)=>{

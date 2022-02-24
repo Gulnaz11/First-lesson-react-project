@@ -4,7 +4,6 @@ import {useCreateMessageForm} from "./hooks/useCreateMessageForm";
 import {useDidUpdate} from "./hooks/useDidUpdate";
 import {useCacheMessageList} from "./hooks/useCacheMessageList";
 import {useMessageList} from "./hooks/useMessageList";
-import {useAddBotText} from "./hooks/useAddBotText";
 
 
 function App() {
@@ -23,8 +22,7 @@ function App() {
         inputValue
    }=useCreateMessageForm ({onSubmit: addNewMessage});
 
-    useAddBotText(messageList,addNewMessage);
-
+  //
   //  const {filteredTaskList} =useTaskFilteredByStatus({list:taskList,filterStatus})
 
   return (
