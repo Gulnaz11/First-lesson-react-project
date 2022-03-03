@@ -1,7 +1,7 @@
 import {useEffect, useRef} from "react";
 
 
-export const useDidUpdate = (effect, debs = [],timer=0) => {
+export const  useDidUpdate = (effect, debs = [],timer=0) => {
 
     const init = useRef(false);
     useEffect(() => {

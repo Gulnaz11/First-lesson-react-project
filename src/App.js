@@ -43,32 +43,6 @@ function App() {
                   </div>
                   })
           }
-
-          {/*<form onSubmit={handleSubmit}>*/}
-          {/*    <input onChange={onChangeInput} value={inputValue} type="text"/>*/}
-          {/*    <button type="submit">*/}
-          {/*        Save*/}
-          {/*    </button>*/}
-          {/*</form>*/}
-          {/*<select value={filterStatus} onChange={onChangeStatus}>*/}
-          {/*    <option value={FILTER_BY_STATUS_ALL}>all</option>*/}
-          {/*    <option value={FILTER_BY_STATUS_IN_WORK}>in work</option>*/}
-          {/*    <option value={FILTER_BY_STATUS_COMPLETED}>complete</option>*/}
-          {/*</select>*/}
-          {/*<ul>*/}
-          {/*    {*/}
-          {/*        filteredTaskList.map(({status, text},index) => {*/}
-          {/*            return <li key={index}>*/}
-          {/*                <input*/}
-          {/*                    checked={status}*/}
-          {/*                    type="checkbox"*/}
-          {/*                    onClick={changeStatus(index,status)}*/}
-          {/*                />*/}
-          {/*                {text}*/}
-          {/*            </li>*/}
-          {/*        })*/}
-          {/*    }*/}
-          {/*</ul>*/}
       </div>
   );
 }
