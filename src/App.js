@@ -10,7 +10,7 @@ import {
     ListItemIcon, IconButton, Checkbox, Select, MenuItem
 } from '@mui/material'
 import Paper from '@mui/material/Paper';
-import {useState, useCallback, useMemo, useEffect} from "react";
+import {useState, useCallback, useMemo, useEffect, useRef} from "react";
 import {useCreateMessageForm} from "./hooks/useCreateMessageForm";
 import {useDidUpdate} from "./hooks/useDidUpdate";
 import {useCacheMessageList} from "./hooks/useCacheMessageList";
@@ -36,6 +36,27 @@ function App() {
 
     useAddBotText(messageList,addNewMessage);
 
+        // const inputRef = useRef(null);
+        // useEffect(()=>{
+        //     inputRef.current?.focus();
+        // },[]);
+
+    const Input = (props) => {
+        const inputRef = useRef(null);
+
+        useEffect(() => {
+            inputRef.current?.focus();
+        }, []);
+
+        return (
+            <input ref={inputRef}
+                   placeholder="Enter text"
+                   onChange={onChangeInput}
+                   value={inputValue}
+                   type="text"/>
+        )
+    }
+
     //  const {filteredTaskList} =useTaskFilteredByStatus({list:taskList,filterStatus})
 
     return (
@@ -57,12 +78,7 @@ function App() {
                 elevation={3}
             >
                 <Box component={"form"} onSubmit={handleSubmit}>
-                    <Input
-                        label="Enter text"
-                        placeholder="Hello"
-                        onChange={onChangeInput}
-                        value={inputValue}
-                        type="text"/>
+                    <Input/>
                     <Button variant="contained" type="submit">
                         Send
                     </Button>
