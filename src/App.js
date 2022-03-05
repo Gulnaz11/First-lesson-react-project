@@ -16,6 +16,8 @@ import {useDidUpdate} from "./hooks/useDidUpdate";
 import {useCacheMessageList} from "./hooks/useCacheMessageList";
 import {useMessageList} from "./hooks/useMessageList";
 import {useAddBotText} from "./hooks/useAddBotText";
+import {ChatList} from "./components/chatList/ChatList";
+
 
 
 function App() {
@@ -35,11 +37,6 @@ function App() {
     }=useCreateMessageForm ({onSubmit: addNewMessage});
 
     useAddBotText(messageList,addNewMessage);
-
-        // const inputRef = useRef(null);
-        // useEffect(()=>{
-        //     inputRef.current?.focus();
-        // },[]);
 
     const Input = (props) => {
         const inputRef = useRef(null);
@@ -72,6 +69,32 @@ function App() {
                     {
                         padding: 2,
                         height: "80vh",
+                    }
+                }
+                elevation={3}>
+                <ChatList
+                    chatList = {[
+                        {
+                            name:'Bot',
+                            id: "1"
+                        },
+                        {
+                            name:'Name1',
+                            id: "2"
+                        },
+                        {
+                            name:'Name2',
+                            id: "3"
+                        }
+                    ]}
+                />
+            </Paper>
+
+            <Paper
+                sx={
+                    {
+                        padding: 2,
+                        height: "80vh",
                         width: '100%'
                     }
                 }
@@ -85,7 +108,7 @@ function App() {
                 </Box>
                 {
                     messageList.map(({text, author},index) => {
-                        return  <ListItem key={index}>
+                        return  <ListItem key={Date.now}>
                             <ListItemText
                                 primary={text}
                                 secondary={author}
