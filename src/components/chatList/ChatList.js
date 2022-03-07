@@ -1,6 +1,8 @@
 
 import propTypes from "prop-types";
 import {ListItem, ListItemButton, ListItemText} from "@mui/material";
+import {Link} from "react-router-dom";
+import {getChatLink, getChatsLink} from "../../navigation";
 
 
 export const ChatList= ({chatList}) =>{
@@ -8,17 +10,17 @@ export const ChatList= ({chatList}) =>{
     return (
        <div>
            <ListItem disablePadding>
-               <ListItemButton>
-                   <ListItemText primary={chatList[0].name} />
+               <ListItemButton component = {Link} to ={getChatLink(chatList[0].id)}>
+                   <ListItemText primary={chatList[0].name}/>
                </ListItemButton>
            </ListItem>
            <ListItem disablePadding>
-               <ListItemButton component="a" href="#simple-list">
+               <ListItemButton component="a" component = {Link} to ={getChatLink(chatList[1].id)}>
                    <ListItemText primary={chatList[1].name} />
                </ListItemButton>
            </ListItem>
            <ListItem disablePadding>
-               <ListItemButton component="a" href="#simple-list">
+               <ListItemButton component="a" component = {Link} to ={getChatLink(chatList[2].id)}>
                    <ListItemText primary={chatList[2].name} />
                </ListItemButton>
            </ListItem>
@@ -27,7 +29,7 @@ export const ChatList= ({chatList}) =>{
            {/*{*/}
            {/*    chatList.map((item)=> {*/}
            {/*        <ListItem disablePadding>*/}
-           {/*            <ListItemButton component="a" href="#simple-list">*/}
+           {/*            <ListItemButton component="a"component = {Link} to ={getChatLink(item.id)}>>*/}
            {/*                <ListItemText primary={item.name} />*/}
            {/*            </ListItemButton>*/}
            {/*        </ListItem>*/}
