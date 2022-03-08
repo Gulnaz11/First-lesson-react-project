@@ -56,10 +56,11 @@ export function Chat() {
             <Paper
                 sx={
                     {
-                        marginTop:2,
+                        marginTop:6,
                         padding: 2,
                         paddingBottom:5,
                         height: "100%",
+                        backgroundColor: "snow",
                     }
                 }
                 elevation={3}

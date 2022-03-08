@@ -1,5 +1,5 @@
 import {useState} from "react";
-import {Breadcrumbs, Button, Drawer, ListItem} from "@mui/material";
+import {Breadcrumbs, Button, Drawer, ListItem, Toolbar} from "@mui/material";
 import {Link} from "react-router-dom/";
 import {getChatsLink, getHomeLink, getProfileLink} from "../../navigation";
 
@@ -16,17 +16,23 @@ export const Header = () => {
 
     return (
         <div>
-            <Breadcrumbs aria-label="breadcrumb">
-                <ListItem component={Link} to={getHomeLink()}>
+            <Toolbar
+            sx={
+                {
+                    backgroundColor: "snow",
+                }
+            }
+            >
+                <Button color={"inherit"} component={Link} to={getHomeLink()}>
                     Home
-                </ListItem>
-                <ListItem component={Link} to={getChatsLink()}>
+                </Button>
+                <Button color={"inherit"} component={Link} to={getChatsLink()}>
                     Chats
-                </ListItem>
-                <ListItem component={Link} to={getProfileLink()}>
+                </Button>
+                <Button color={"inherit"} component={Link} to={getProfileLink()}>
                     Profile
-                </ListItem>
-            </Breadcrumbs>
+                </Button>
+            </Toolbar>
 
         </div>
     )
