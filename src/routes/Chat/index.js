@@ -28,27 +28,20 @@ export function Chat() {
 
     useAddBotText(messageList,addNewMessage);
 
-    const Input = (props) => {
-        const inputRef = useRef(null);
 
-        useEffect(() => {
-            inputRef.current?.focus();
-        }, []);
+    const inputRef = useRef(null);
 
-        const {chatId} = useParams();
+    useEffect(() => {
+      inputRef.current?.focus();
+    })
 
-        if(!chatList.find ((item)=> item.id === chatId)){
-            return <Redirect to ={ `/chats`}></Redirect>
-        }
+    const {chatId} = useParams();
 
-        return (
-            <input ref={inputRef}
-                   placeholder="Enter text"
-                   onChange={onChangeInput}
-                   value={inputValue}
-                   type="text"/>
-        )
+    if(!chatList.find ((item)=> item.id === chatId)){
+       return <Redirect to ={ `/chats`}></Redirect>
     }
+
+
 
     //  const {filteredTaskList} =useTaskFilteredByStatus({list:taskList,filterStatus})
 
@@ -72,7 +65,11 @@ export function Chat() {
                 elevation={3}
             >
                 <Box component={"form"} onSubmit={handleSubmit}>
-                    <Input/>
+                    <input ref={inputRef}
+                           placeholder="Enter text"
+                           onChange={onChangeInput}
+                           value={inputValue}
+                           type="text"/>
                     <Button variant="contained" type="submit">
                         Send
                     </Button>
