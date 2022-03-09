@@ -6,6 +6,8 @@ import {Chats} from "./routes/Chats";
 import * as PropTypes from "prop-types";
 import {Profile} from "./routes/Profile";
 import {Home} from "./routes/Home";
+import {Provider} from "react-redux";
+import {store} from "./store";
 
 
 
@@ -22,7 +24,13 @@ export default function App() {
                     <Route  path={getChatLink()} component={Chat}/>
                 </Chats>
             </Route>
-            <Route exact path={'/profile'} component={Profile}/>
+
+                <Route exact path={'/profile'}>
+                    <Provider store={store}>
+                          <Profile/>
+                    </Provider>
+                </Route>
+
 
         </Switch>
     </Switch>

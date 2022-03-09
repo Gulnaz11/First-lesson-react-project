@@ -19,7 +19,7 @@ export function Chat() {
     useCacheMessageList(messageList,setMessageList);
     //
     //
-    //  const {filterStatus,onChangeStatus} = useFilterByStatus();
+    //  const {filterStatu,onChangeStatus} = useFilterByStatus();
     const {
         handleSubmit,
         onChangeInput,
