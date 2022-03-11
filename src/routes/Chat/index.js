@@ -7,27 +7,34 @@ import {Box, Button, Container, ListItem, ListItemText, Paper} from "@mui/materi
 import {ChatList} from "../../components/chatList/ChatList";
 import {nanoid} from "nanoid";
 import {Redirect, useParams} from "react-router-dom";
-import {chatList} from "../Chats";
+import {useDispatch, useSelector} from "react-redux";
+import {getChatList} from "../../store/chats/selector";
+import {getMessageByProject} from "../../store/chat/selector";
+import {createMessage} from "../../store/chat/action";
+
 
 
 export function Chat() {
 
-    const {messageList,setMessageList, addNewMessage} = useMessageList();
+    const {chatId} = useParams();
+    let inputValue;
+    const onChangeInput = (event) => {
+        inputValue=event.target.value;
+    }
+    const messages = useSelector(getMessageByProject(chatId) )
 
-    //  const {addNewTask, taskList,changeStatus,setTaskList}= useTaskList();
-    //
-    useCacheMessageList(messageList,setMessageList);
-    //
-    //
-    //  const {filterStatu,onChangeStatus} = useFilterByStatus();
-    const {
-        handleSubmit,
-        onChangeInput,
-        inputValue
-    }=useCreateMessageForm ({onSubmit: addNewMessage});
+    const dispatch = useDispatch();
 
-    useAddBotText(messageList,addNewMessage);
-
+    const handlerCreateMessage = (event) => {
+        event.preventDefault();
+        dispatch( createMessage(chatId,{
+            id: nanoid(),
+            author: 'Me',
+            text: inputValue,
+        }) )
+        inputRef.current.value = ''
+    }
+    useAddBotText(messages,chatId);
 
     const inputRef = useRef(null);
 
@@ -35,15 +42,11 @@ export function Chat() {
       inputRef.current?.focus();
     })
 
-    const {chatId} = useParams();
+    const chats = useSelector(getChatList);
+    if(!chats.find ((item)=> item.id === chatId)){
+       return <Redirect to ={ `/chats`}></Redirect>
+    }
 
-    // if(!chatList.find ((item)=> item.id === chatId)){
-    //    return <Redirect to ={ `/chats`}></Redirect>
-    // }
-
-
-
-    //  const {filteredTaskList} =useTaskFilteredByStatus({list:taskList,filterStatus})
 
     return (
         <Container
@@ -65,18 +68,18 @@ export function Chat() {
                 }
                 elevation={3}
             >
-                <Box component={"form"} onSubmit={handleSubmit}>
+                <Box component={"form"} onSubmit={handlerCreateMessage}>
                     <input ref={inputRef}
-                           placeholder="Enter text"
-                           onChange={onChangeInput}
                            value={inputValue}
+                           onChange={onChangeInput}
+                           placeholder="Enter text"
                            type="text"/>
                     <Button variant="contained" type="submit">
                         Send
                     </Button>
                 </Box>
                 {
-                    messageList.map(({text, author},index) => {
+                    messages?.map(({text, author}) => {
                         return  <ListItem key={nanoid()}>
                             <ListItemText
                                 primary={text}
