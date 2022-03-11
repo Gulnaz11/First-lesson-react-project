@@ -15,25 +15,28 @@ export default function App() {
 
     return (<div>
         <Header/>
-    <Switch>
-        <Route exact path={getHomeLink()} component={Home}/>
+        <Provider store={store}>
+            <Switch>
+               <Route exact path={getHomeLink()} component={Home}/>
         {/*<Route path={'/chat'} component={Chat}/>*/}
-        <Switch>
-            <Route path={getChatsLink()}>
-                <Chats>
-                    <Route  path={getChatLink()} component={Chat}/>
-                </Chats>
-            </Route>
+                  <Switch>
+                      <Route path={getChatsLink()}>
+                          <Chats>
+                              <Route  path={getChatLink()} component={Chat}/>
+                          </Chats>
+                      </Route>
 
-                <Route exact path={'/profile'}>
-                    <Provider store={store}>
-                          <Profile/>
-                    </Provider>
-                </Route>
+                      <Route exact path={'/profile'}>
+
+                                    <Profile/>
+
+                      </Route>
 
 
-        </Switch>
+                  </Switch>
+
     </Switch>
+        </Provider>
         </div>
     )
 }

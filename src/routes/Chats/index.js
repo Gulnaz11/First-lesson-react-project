@@ -1,30 +1,52 @@
-import {Grid, Paper, Typography} from "@mui/material";
-import {ChatList} from "../../components/chatList/ChatList";
+import {
+    Box,
+    Button,
+    Grid,
+    ListItem,
+    ListItemButton,
+    ListItemText,
+    Modal,
+    Paper,
+    TextField,
+    Typography
+} from "@mui/material";
+
 import {nanoid} from "nanoid";
-import {useLocation, useParams} from "react-router-dom";
+import {Link, useLocation, useParams} from "react-router-dom";
 import {} from "./index.css"
+import {getChatList} from "../../store/chats/selector";
+import {useDispatch, useSelector} from "react-redux";
+import {createChat} from "../../store/chats/action";
+import {getChatLink} from "../../navigation";
+import {Input, List} from "@mui/icons-material";
+import {useState} from "react";
 
-
-
-export  const chatList = [
-    {
-        name:'Bot',
-        id: nanoid()
-    },
-    {
-        name:'Name1',
-        id: nanoid()
-    },
-    {
-        name:'Name2',
-        id: nanoid()
-    }
-]
 
 export const Chats = ({children}) =>{
 
+    const chats = useSelector(getChatList);
+    const dispatch = useDispatch();
+
+    const handleCreateChat = () => {
+        handleClose()
+        dispatch(createChat({
+            id: nanoid(),
+            name:inputValue,
+        }))
+
+    }
+
+
+    let inputValue;
+
+    const onChangeInput = (event) => {
+        inputValue=event.target.value;
+    }
+    const [open, setOpen] = useState(false);
+    const handleOpen = () => setOpen(true);
+    const handleClose = () => setOpen(false);
+
     let location=useLocation();
-    console.log(location.pathname.slice(1))
 
     return <div>
       <Grid container spacing = {2} className={location.pathname.slice(1)} >
@@ -40,9 +62,47 @@ export const Chats = ({children}) =>{
               }
               elevation={3}>
 
-              <ChatList
-                  chatList={chatList}
-              />
+
+              <div>
+                  {
+                      chats?.map((item) => {
+                          return <ListItem disablePadding key = {item.id}>
+                              <ListItemButton component="a" component = {Link} to ={getChatLink(item.id)}>
+                                  <ListItemText primary={item.name} />
+                              </ListItemButton>
+                          </ListItem>
+                      })
+                  }
+
+                  <Button onClick={handleOpen}>Add new chat</Button>
+                  <Modal
+                      open={open}
+                      onClose={handleClose}
+                      aria-labelledby="modal-modal-title"
+                      aria-describedby="modal-modal-description"
+                  >
+                      <Box className={"modal"}>
+
+                          <TextField
+                              id="standard-basic"
+                              variant="standard"
+                              placeholder="Name chat"
+                              value={inputValue}
+                              onChange={onChangeInput}
+                              type="text"/>
+
+                          <Button
+                              variant="contained"
+                              type="submit"
+                              onClick={handleCreateChat}
+                          >
+                              Add
+                          </Button>
+                      </Box>
+                  </Modal>
+              </div>
+
+
           </Paper>
           {children}
       </Grid>

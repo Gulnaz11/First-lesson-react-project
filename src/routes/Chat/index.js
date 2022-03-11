@@ -37,9 +37,9 @@ export function Chat() {
 
     const {chatId} = useParams();
 
-    if(!chatList.find ((item)=> item.id === chatId)){
-       return <Redirect to ={ `/chats`}></Redirect>
-    }
+    // if(!chatList.find ((item)=> item.id === chatId)){
+    //    return <Redirect to ={ `/chats`}></Redirect>
+    // }
 
 
 
