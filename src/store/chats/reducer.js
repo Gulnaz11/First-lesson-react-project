@@ -1,5 +1,5 @@
 import {nanoid} from "nanoid";
-import {CREATE_CHAT} from "./action";
+import {CREATE_CHAT, DELETE_CHAT} from "./action";
 
 
 const initialState = {
@@ -29,6 +29,13 @@ export const  chatsReducer = (state = initialState,action) => {
                     ...state.chatList,
                     action.payload,
                 ]
+            }
+        }
+        case(DELETE_CHAT):  {
+            return {
+                ...state,
+                chatList: state.chatList.filter((item) => item.id !== action.payload),
+
             }
         }
         default:{

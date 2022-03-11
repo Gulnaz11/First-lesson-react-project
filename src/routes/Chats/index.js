@@ -16,7 +16,7 @@ import {Link, useLocation, useParams} from "react-router-dom";
 import {} from "./index.css"
 import {getChatList} from "../../store/chats/selector";
 import {useDispatch, useSelector} from "react-redux";
-import {createChat} from "../../store/chats/action";
+import {createChat, deleteChat} from "../../store/chats/action";
 import {getChatLink} from "../../navigation";
 import {Input, List} from "@mui/icons-material";
 import {useState} from "react";
@@ -33,9 +33,11 @@ export const Chats = ({children}) =>{
             id: nanoid(),
             name:inputValue,
         }))
-
     }
 
+    const handleDeleteTChat = (id) => () => {
+        dispatch(deleteChat(id))
+    }
 
     let inputValue;
 
@@ -70,8 +72,12 @@ export const Chats = ({children}) =>{
                               <ListItemButton component="a" component = {Link} to ={getChatLink(item.id)}>
                                   <ListItemText primary={item.name} />
                               </ListItemButton>
+                              <Button onClick={handleDeleteTChat(item.id)}>
+                              Delete
+                          </Button>
                           </ListItem>
                       })
+
                   }
 
                   <Button onClick={handleOpen}>Add new chat</Button>
