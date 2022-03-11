@@ -3,10 +3,10 @@ import {useDispatch, useSelector} from "react-redux";
 import {IS_SHOW, SAVE_PROFILE_NAME} from "../../store/profile/action";
 import Button from "@mui/material/Button/Button";
 import {useState} from "react";
+import {getProfileList} from "../../store/profile/selector";
 
 
 export const Profile = () =>{
-
 
     let inputValue;
 
@@ -14,7 +14,7 @@ export const Profile = () =>{
         inputValue=event.target.value;
     }
 
-   const profile = useSelector((state) => state.profile )
+   const profile = useSelector(getProfileList);
 
      const dispatch = useDispatch();
 
