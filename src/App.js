@@ -19,14 +19,11 @@ export default function App() {
              <Provider store={store}>
                  <Switch>
                     <Route exact path={getHomeLink()} component={Home}/>
-                    <Switch>
                          <Route path={getChatsLink()}>
                              <Chats>
                                  <Route  path={getChatLink()} component={Chat}/>
                              </Chats>
                          </Route>
-                         <Route exact path={'/profile'} component={Profile}/>
-                    </Switch>
                  </Switch>
              </Provider>
         </div>

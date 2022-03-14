@@ -29,9 +29,6 @@ export const Header = () => {
                 <Button color={"inherit"} component={Link} to={getChatsLink()}>
                     Chats
                 </Button>
-                <Button color={"inherit"} component={Link} to={getProfileLink()}>
-                    Profile
-                </Button>
             </Toolbar>
 
         </div>
