@@ -1,10 +1,6 @@
-import {useMessageList} from "../../hooks/useMessageList";
-import {useCacheMessageList} from "../../hooks/useCacheMessageList";
-import {useCreateMessageForm} from "../../hooks/useCreateMessageForm";
 import {useAddBotText} from "../../hooks/useAddBotText";
 import {useEffect, useRef} from "react";
 import {Box, Button, Container, ListItem, ListItemText, Paper} from "@mui/material";
-import {ChatList} from "../../components/chatList/ChatList";
 import {nanoid} from "nanoid";
 import {Redirect, useParams} from "react-router-dom";
 import {useDispatch, useSelector} from "react-redux";
@@ -85,7 +81,7 @@ export function Chat() {
                                 primary={text}
                                 secondary={author}
                                 secondaryTypographyProps={{
-                                    color:  author == "Me" ? 'rgb(187, 242, 194);' : 'rgb(242, 187, 218);',
+                                    color:  author === "Me" ? 'rgb(187, 242, 194);' : 'rgb(242, 187, 218);',
 
                                 }}/>
                         </ListItem>

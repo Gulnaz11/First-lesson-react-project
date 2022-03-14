@@ -1,10 +1,8 @@
-import {getChatLink, getChatsLink, getHomeLink, getProfileLink} from "./navigation";
+import {getChatLink, getChatsLink, getHomeLink} from "./navigation";
 import {Switch,Route} from 'react-router-dom'
 import {Chat} from "./routes/Chat";
 import {Header} from "./components/Header";
 import {Chats} from "./routes/Chats";
-import * as PropTypes from "prop-types";
-import {Profile} from "./routes/Profile";
 import {Home} from "./routes/Home";
 import {Provider} from "react-redux";
 import {store} from "./store";

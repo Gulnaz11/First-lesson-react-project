@@ -1,8 +1,7 @@
 import {useDidUpdate} from "./useDidUpdate";
 import {createMessage} from "../store/chat/action";
 import {nanoid} from "nanoid";
-import {useDispatch, useSelector} from "react-redux";
-import {getMessageByProject} from "../store/chat/selector";
+import {useDispatch} from "react-redux";
 
 
 export const useAddBotText =(messages, chatId) => {

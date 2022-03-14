@@ -1,6 +1,4 @@
-import {useCallback, useMemo, useState} from "react";
-import {FILTER_BY_STATUS_ALL} from "../constants";
-
+import {useCallback, useState} from "react";
 
 export const useCreateMessageForm = ({onSubmit}) =>{
     const [inputValue, setInputValue] = useState('');

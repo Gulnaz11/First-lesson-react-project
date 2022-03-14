@@ -8,17 +8,15 @@ import {
     Modal,
     Paper,
     TextField,
-    Typography
 } from "@mui/material";
 
 import {nanoid} from "nanoid";
-import {Link, useLocation, useParams} from "react-router-dom";
+import {Link, useLocation} from "react-router-dom";
 import {} from "./index.css"
 import {getChatList} from "../../store/chats/selector";
 import {useDispatch, useSelector} from "react-redux";
 import {createChat, deleteChat} from "../../store/chats/action";
 import {getChatLink} from "../../navigation";
-import {Input, List} from "@mui/icons-material";
 import {useState} from "react";
 
 
