@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/Gulnaz11.github.io/First-lesson-react-project/static/css/main.29faa195.css",
+    "main.js": "/Gulnaz11.github.io/First-lesson-react-project/static/js/main.36b76bda.js",
+    "static/js/787.a2bf511c.chunk.js": "/Gulnaz11.github.io/First-lesson-react-project/static/js/787.a2bf511c.chunk.js",
+    "index.html": "/Gulnaz11.github.io/First-lesson-react-project/index.html",
+    "main.29faa195.css.map": "/Gulnaz11.github.io/First-lesson-react-project/static/css/main.29faa195.css.map",
+    "main.36b76bda.js.map": "/Gulnaz11.github.io/First-lesson-react-project/static/js/main.36b76bda.js.map",
+    "787.a2bf511c.chunk.js.map": "/Gulnaz11.github.io/First-lesson-react-project/static/js/787.a2bf511c.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.29faa195.css",
+    "static/js/main.36b76bda.js"
+  ]
+}
