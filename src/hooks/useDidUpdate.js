@@ -1,18 +1,14 @@
 import {useEffect, useRef} from "react";
 
 
-export const  useDidUpdate = (effect, debs = [],timer=0) => {
+export const  useDidUpdate = (effect, debs = []) => {
 
     const init = useRef(false);
     useEffect(() => {
-        const timerId = setTimeout(() => {
         if (init.current) {
             effect();
         }  else {
             init.current = true;
-        } },timer)
-        return ()=> {
-            clearTimeout(timerId);
         }
-    },debs)
+    },[debs,effect])
 }

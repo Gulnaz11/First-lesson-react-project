@@ -14,5 +14,5 @@ export const useAddBotText =(messages, chatId) => {
                 text: "Hello!",
             }) )
         };
-    },[messages,chatId],2000)
+    },[messages,chatId])
 }

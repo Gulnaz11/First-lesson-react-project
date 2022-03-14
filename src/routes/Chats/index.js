@@ -67,7 +67,7 @@ export const Chats = ({children}) =>{
                   {
                       chats?.map((item) => {
                           return <ListItem disablePadding key = {item.id}>
-                              <ListItemButton component="a" component = {Link} to ={getChatLink(item.id)}>
+                              <ListItemButton component = {Link} to ={getChatLink(item.id)}>
                                   <ListItemText primary={item.name} />
                               </ListItemButton>
                               <Button onClick={handleDeleteTChat(item.id)}>
